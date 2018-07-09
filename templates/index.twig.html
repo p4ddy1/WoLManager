@@ -1,1 +1,22 @@
-<h1>INDEX</h1>
+<h1>WoLManager</h1>
+
+<table border="1">
+    <thead>
+    <th>Name</th>
+    <th>IP</th>
+    <th>Subnet Mask</th>
+    <th>MAC</th>
+    <th>Wake</th>
+    </thead>
+    <tbody>
+    {% for device in devices %}
+    <tr>
+        <td>{{device.getProperty('name')}}</td>
+        <td>{{device.getProperty('ip')}}</td>
+        <td>{{device.getProperty('subnet')}}</td>
+        <td>{{device.getProperty('mac')}}</td>
+        <td><a href="/wake/{{device.getProperty('id')}}">WAKEUP</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
