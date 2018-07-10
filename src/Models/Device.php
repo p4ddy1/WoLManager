@@ -6,6 +6,6 @@ use App\Base\BaseModel;
 class Device extends BaseModel{
     function __construct()
     {
-        parent::__construct('devices');
+        parent::__construct();
     }
 }
