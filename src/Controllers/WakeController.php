@@ -10,6 +10,6 @@ class WakeController extends BaseController{
         $device = Device::loadById($id);
         $magicPacket = new MagicPacket($device->getProperty('mac'), $device->getProperty('ip'),$device->getProperty('subnet'));
         $magicPacket->send();
-        header('location: /');
+        header('location: /devices');
     }
 }

@@ -1,0 +1,8 @@
+<form action="/devices/edit" method="post">
+    <input type="hidden" name="id" value="{{device.getProperty('id')}}">
+    Name: <input type="text" name="name" value="{{device.getProperty('name')}}"><br />
+    IP: <input type="text" name="ip" value="{{device.getProperty('ip')}}"><br />
+    Subnet: <input type="text" name="subnet" value="{{device.getProperty('subnet')}}"><br />
+    MAC: <input type="text" name="mac" value="{{device.getProperty('mac')}}" ><br />
+    <button type="submit">OK</button>
+</form>
