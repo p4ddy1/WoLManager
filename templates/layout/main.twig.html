@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <script src="dist/app.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% include "include/menu.twig.html" %}
+        <div class="main">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </body>
+</html>
