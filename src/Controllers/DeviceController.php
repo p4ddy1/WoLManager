@@ -13,11 +13,11 @@ class DeviceController extends BaseController
         }else{
             $devices = Device::loadAll();
         }
-        echo $this->twig->render('devices/index.html.twig', ['devices' => $devices, 'search' => $search]);
+        $this->render('devices/index.html.twig', ['devices' => $devices, 'search' => $search]);
     }
 
     public function create(){
-        echo $this->twig->render('devices/create.html.twig');
+        echo $this->render('devices/create.html.twig');
     }
 
     public function save(){
@@ -28,6 +28,9 @@ class DeviceController extends BaseController
             $device->setProperty('subnet', $data['subnet']);
             $device->setProperty('mac', $data['mac']);
             $device->create();
+            $this->setSuccess('Device successfully added!');
+        }else{
+            $this->setError('Error while creating new device');
         }
 
         header('Location: /devices');
@@ -37,12 +40,13 @@ class DeviceController extends BaseController
         $device = Device::loadById($id);
         $device->delete();
 
+        $this->setSuccess('Device successfully deleted!');
         header('Location: /devices');
     }
 
     public function edit($id){
         $device = Device::loadById($id);
-        echo $this->twig->render('devices/edit.html.twig', ['device' => $device]);
+        echo $this->render('devices/edit.html.twig', ['device' => $device]);
     }
 
     public function update(){
@@ -55,7 +59,11 @@ class DeviceController extends BaseController
             $device->setProperty('subnet', $data['subnet']);
             $device->setProperty('mac', $data['mac']);
             $device->update();
+            $this->setSuccess('Device successfully edited!');
+        }else{
+            $this->setError('Error while saving device!');
         }
+
 
         header('Location: /devices');
     }
