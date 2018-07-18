@@ -7,8 +7,13 @@ use App\Models\Device;
 class DeviceController extends BaseController
 {
     public function index(){
-        $devices = Device::loadAll();
-        echo $this->twig->render('devices/index.html.twig', ['devices' => $devices]);
+        $search = $_GET['search'];
+        if(isset($search)){
+            $devices = Device::where('name','LIKE','%'.$search.'%', true);
+        }else{
+            $devices = Device::loadAll();
+        }
+        echo $this->twig->render('devices/index.html.twig', ['devices' => $devices, 'search' => $search]);
     }
 
     public function create(){
