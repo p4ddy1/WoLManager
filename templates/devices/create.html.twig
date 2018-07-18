@@ -1,0 +1,33 @@
+{% extends "layout/main.html.twig" %}
+{% block title %}Devices - Add {% endblock %}
+{% block content %}
+    <h2>Devices - Add</h2>
+    <form class="pure-form pure-form-aligned" action="/devices/add" method="post">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="ip">IP Address</label>
+                <input id="ip" type="text" name="ip" placeholder="192.168.178.10">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="subnet">Subnet Mask</label>
+                <input id="subnet" type="text" name="subnet" value="255.255.255.0">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="mac">MAC Address</label>
+                <input id="mac" type="text" name="mac" placeholder="00:1A:22:3B:44:64">
+            </div>
+
+            <div class="pure-controls">
+                <button class="pure-button button-green" type="submit">OK</button>
+                <a href="/devices" class="pure-button button-red">Cancel</a>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -6,6 +6,6 @@ use App\Base\BaseController;
 class IndexController extends BaseController
 {
     public function index(){
-        echo $this->twig->render('index.twig.html');
+        echo $this->twig->render('index.html.twig');
     }
 }

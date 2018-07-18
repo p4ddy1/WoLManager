@@ -8,11 +8,11 @@ class DeviceController extends BaseController
 {
     public function index(){
         $devices = Device::loadAll();
-        echo $this->twig->render('devices/index.twig.html', ['devices' => $devices]);
+        echo $this->twig->render('devices/index.html.twig', ['devices' => $devices]);
     }
 
     public function create(){
-        echo $this->twig->render('devices/create.twig.html');
+        echo $this->twig->render('devices/create.html.twig');
     }
 
     public function save(){
@@ -37,7 +37,7 @@ class DeviceController extends BaseController
 
     public function edit($id){
         $device = Device::loadById($id);
-        echo $this->twig->render('devices/edit.twig.html', ['device' => $device]);
+        echo $this->twig->render('devices/edit.html.twig', ['device' => $device]);
     }
 
     public function update(){

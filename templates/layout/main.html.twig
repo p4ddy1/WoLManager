@@ -2,13 +2,13 @@
 <html>
     <head>
         {% block head %}
-            <script src="dist/app.js"></script>
+            <script src="/dist/app.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>{% block title %}{% endblock %}</title>
         {% endblock %}
     </head>
     <body>
-        {% include "include/menu.twig.html" %}
+        {% include "include/menu.html.twig" %}
         <div class="main">
         {% block content %}
         {% endblock %}

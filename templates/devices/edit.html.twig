@@ -1,0 +1,34 @@
+{% extends "layout/main.html.twig" %}
+{% block title %}Devices - Edit {% endblock %}
+{% block content %}
+    <h2>Devices - Add</h2>
+    <form class="pure-form pure-form-aligned" action="/devices/edit" method="post">
+        <input type="hidden" name="id" value="{{device.getProperty('id')}}">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" value="{{device.getProperty('name')}}">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="ip">IP Address</label>
+                <input id="ip" type="text" name="ip" value="{{device.getProperty('ip')}}">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="subnet">Subnet Mask</label>
+                <input id="subnet" type="text" name="subnet" value="{{device.getProperty('subnet')}}">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="mac">MAC Address</label>
+                <input id="mac" type="text" name="mac" value="{{device.getProperty('mac')}}">
+            </div>
+
+            <div class="pure-controls">
+                <button class="pure-button button-green" type="submit">OK</button>
+                <a href="/devices" class="pure-button button-red">Cancel</a>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
