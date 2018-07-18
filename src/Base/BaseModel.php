@@ -3,8 +3,7 @@ namespace App\Base;
 
 use App\Classes\Database;
 
-
-abstract class BaseModel{
+abstract class BaseModel {
     protected $properties, $db, $tableName;
 
     function __construct()
@@ -111,25 +110,21 @@ abstract class BaseModel{
         return $models;
     }
 
-    public static function where($attribute, $operator = '=', $value, $any = false){
+    public static function where($attribute, $operator, $value)
+    {
         $db = Database::getInstance();
         $model = new static();
         $tableName = self::generateTableName($model);
-        if($any){
-            $sql = 'SELECT * FROM '.$tableName.' WHERE '.$attribute.' '. $operator . ' :val';
-        }else{
-            $sql = 'SELECT * FROM '.$tableName.' WHERE '.$attribute.' '. $operator . ' :val';
-        }
-        $rows = $db->queryMultiple($sql, ['val' => $value]);
+        $rows = $db->queryMultiple('SELECT * FROM ' . $tableName . ' WHERE ' . $attribute . ' ' . $operator . ' :val',
+            ['val' => $value]);
         $models = array();
-        foreach ($rows as $row){
+        foreach ($rows as $row) {
             $currentModel = new static();
-            foreach($row as $key => $value){
+            foreach ($row as $key => $value) {
                 $currentModel->setProperty($key, $value);
             }
-            array_push($models,$currentModel);
+            array_push($models, $currentModel);
         }
         return $models;
     }
-
 }
