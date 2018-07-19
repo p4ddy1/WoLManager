@@ -16,6 +16,7 @@ class MagicPacket
         $this->port = $port;
 
         $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+        socket_set_option($this->socket, SOL_SOCKET, SO_BROADCAST, 1);
     }
 
     public function send(){
