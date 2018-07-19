@@ -7,8 +7,9 @@ use App\Models\Device;
 class DeviceController extends BaseController
 {
     public function index(){
-        $search = $_GET['search'];
-        if(isset($search)){
+        $search = null;
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
             $devices = Device::where('name','LIKE','%'.$search.'%', true);
         }else{
             $devices = Device::loadAll();

@@ -7,7 +7,7 @@ according to the information.
 
 ### Requirements
 
-* Webserver
+* Webserver with rewrite support
 * PHP >7.0 with sockets support and pdo_sqlite support
 * composer
 * npm
