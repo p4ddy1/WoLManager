@@ -1,5 +1,5 @@
 .main {
-    padding: 1em;
+    padding: 0em 1em 1em 1em;
 }
 
 .top-buffer {
@@ -31,4 +31,34 @@
 
 .button-blue {
     background: rgb(45, 150, 219);
+}
+
+.alert{
+    padding: 1em;
+    color: white;
+    border-radius: 5px;
+    border: solid 1px;
+    -webkit-box-shadow: 1px 1px 5px #838383;
+    -moz-box-shadow: 1px 1px 5px #838383;
+    box-shadow: 1px 1px 5px #838383;
+}
+
+.alert-success {
+    background: rgba(28,184,65,0.8);
+    border-color: rgba(28,184,65,1);
+}
+
+.alert-error {
+    background: rgba(202,60,65,0.8);
+    border-color: rgba(202,60,65,1);
+}
+
+.alert-warning {
+    background: rgba(223,200,50,0.8);
+    border-color: rgba(223,200,50,1);
+}
+
+.alert-info {
+    background: rgba(45, 150, 219,0.8);
+    border-color: rgba(45, 150, 219,1);
 }
