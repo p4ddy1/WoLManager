@@ -30,3 +30,12 @@ according to the information.
 # npm run build
 # php setup.php
 ```
+
+### Troubleshooting
+
+Q: I am unable to add new devices or edit existing devices.  
+A: Check the permissions of the _db_ folder. The user which executes the PHP scripts (in most cases the user of the webserver)
+needs write permissions to that folder. Example for Ubuntu Server with apache2:
+```
+# chown -R www-data:www-data db
+```
