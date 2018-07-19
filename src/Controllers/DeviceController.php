@@ -27,7 +27,7 @@ class DeviceController extends BaseController
             $device->setProperty('name', $data['name']);
             $device->setProperty('ip', $data['ip']);
             $device->setProperty('subnet', $data['subnet']);
-            $device->setProperty('mac', $data['mac']);
+            $device->setProperty('mac', strtoupper($data['mac']));
             $device->create();
             $this->setSuccess('Device successfully added!');
         }else{
@@ -58,7 +58,7 @@ class DeviceController extends BaseController
             $device->setProperty('name', $data['name']);
             $device->setProperty('ip', $data['ip']);
             $device->setProperty('subnet', $data['subnet']);
-            $device->setProperty('mac', $data['mac']);
+            $device->setProperty('mac', strtoupper($data['mac']));
             $device->update();
             $this->setSuccess('Device successfully edited!');
         }else{
