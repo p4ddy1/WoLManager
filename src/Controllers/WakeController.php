@@ -8,7 +8,7 @@ use App\Models\Device;
 class WakeController extends BaseController{
     function wakeupDevice($id){
         $device = Device::loadById($id);
-        $magicPacket = new MagicPacket($device->getProperty('mac'), $device->getProperty('ip'),$device->getProperty('subnet'));
+        $magicPacket = new MagicPacket($device->getMAC(), $device->getIP(),$device->getSubnet());
         $magicPacket->send();
         header('location: /devices');
     }

@@ -22,13 +22,13 @@
         <tbody>
         {% for device in devices %}
         <tr>
-            <td>{{device.getProperty('name')}}</td>
-            <td>{{device.getProperty('ip')}}</td>
-            <td>{{device.getProperty('subnet')}}</td>
-            <td>{{device.getProperty('mac')}}</td>
-            <td><a class="pure-button button-small button-blue" href="/wake/{{device.getProperty('id')}}">Wake</a></td>
-            <td><a class="pure-button button-small button-yellow" href="/devices/edit/{{device.getProperty('id')}}">Edit</a></td>
-            <td><a class="pure-button button-small button-red" href="/devices/delete/{{device.getProperty('id')}}">Delete</a></td>
+            <td>{{device.getName}}</td>
+            <td>{{device.getIP}}</td>
+            <td>{{device.getSubnet}}</td>
+            <td>{{device.getMAC}}</td>
+            <td><a class="pure-button button-small button-blue" href="/wake/{{device.getID()}}">Wake</a></td>
+            <td><a class="pure-button button-small button-yellow" href="/devices/edit/{{device.getID()}}">Edit</a></td>
+            <td><a class="pure-button button-small button-red" href="/devices/delete/{{device.getID()}}">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>

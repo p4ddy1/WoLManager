@@ -12,19 +12,19 @@ abstract class BaseModel {
         $this->tableName = self::generateTableName($this);
     }
 
-    public function setProperty($key, $value){
+    protected function setProperty($key, $value){
         $this->properties[$key] = $value;
     }
 
-    public function getProperty($key){
+    protected function getProperty($key){
         return $this->properties[$key];
     }
 
-    public function deleteProperty($key){
+    protected function deleteProperty($key){
         unset($this->properties[$key]);
     }
 
-    public function checkProperty($key){
+    protected function checkProperty($key){
         return array_key_exists($key,$this->properties);
     }
 

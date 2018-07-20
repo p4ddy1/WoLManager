@@ -24,10 +24,10 @@ class DeviceController extends BaseController
     public function save(){
         if($data = $this->validateInput()){
             $device = new Device();
-            $device->setProperty('name', $data['name']);
-            $device->setProperty('ip', $data['ip']);
-            $device->setProperty('subnet', $data['subnet']);
-            $device->setProperty('mac', strtoupper($data['mac']));
+            $device->setName($data['name']);
+            $device->setIP($data['ip']);
+            $device->setSubnet($data['subnet']);
+            $device->setMAC(strtoupper($data['mac']));
             $device->create();
             $this->setSuccess('Device successfully added!');
         }else{
@@ -55,10 +55,10 @@ class DeviceController extends BaseController
         $data = $this->validateInput();
         if($id && $data){
             $device = Device::loadById($id);
-            $device->setProperty('name', $data['name']);
-            $device->setProperty('ip', $data['ip']);
-            $device->setProperty('subnet', $data['subnet']);
-            $device->setProperty('mac', strtoupper($data['mac']));
+            $device->setName($data['name']);
+            $device->setIP($data['ip']);
+            $device->setSubnet($data['subnet']);
+            $device->setMAC(strtoupper($data['mac']));
             $device->update();
             $this->setSuccess('Device successfully edited!');
         }else{

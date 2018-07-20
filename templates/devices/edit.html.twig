@@ -3,26 +3,26 @@
 {% block content %}
     <h2>Devices - Add</h2>
     <form class="pure-form pure-form-aligned" action="/devices/edit" method="post">
-        <input type="hidden" name="id" value="{{device.getProperty('id')}}">
+        <input type="hidden" name="id" value="{{device.getID}}">
         <fieldset>
             <div class="pure-control-group">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="name" value="{{device.getProperty('name')}}">
+                <input id="name" type="text" name="name" value="{{device.getName}}">
             </div>
 
             <div class="pure-control-group">
                 <label for="ip">IP Address</label>
-                <input id="ip" type="text" name="ip" value="{{device.getProperty('ip')}}">
+                <input id="ip" type="text" name="ip" value="{{device.getIP}}">
             </div>
 
             <div class="pure-control-group">
                 <label for="subnet">Subnet Mask</label>
-                <input id="subnet" type="text" name="subnet" value="{{device.getProperty('subnet')}}">
+                <input id="subnet" type="text" name="subnet" value="{{device.getSubnet}}">
             </div>
 
             <div class="pure-control-group">
                 <label for="mac">MAC Address</label>
-                <input id="mac" type="text" name="mac" value="{{device.getProperty('mac')}}">
+                <input id="mac" type="text" name="mac" value="{{device.getMAC}}">
             </div>
 
             <div class="pure-controls">
