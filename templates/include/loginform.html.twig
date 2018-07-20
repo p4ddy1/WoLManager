@@ -1,0 +1,13 @@
+{% if not loggedIn %}
+<form class="pure-form pure-form-stacked" method="post" action="/login">
+    <fieldset>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="Username" required>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password" required>
+
+        <button type="submit" class="pure-button button-blue">Login</button>
+    </fieldset>
+</form>
+{% endif %}

@@ -16,9 +16,10 @@ according to the information.
 
 ### TODO
 
-* Add authentication support
 * Add configuration support 
 * Better error handling
+* Add more comments
+* Add tests
 
 ### Installation
 ```

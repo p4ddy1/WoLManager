@@ -86,7 +86,7 @@ abstract class BaseModel {
         $db = Database::getInstance();
         $model = new static();
         $tableName = self::generateTableName($model);
-        $row = $db->querySingle('SELECT * FROM '.$tableName.' WHERE id = :id', [':id' => $id]);
+        $row = $db->querySingle('SELECT * FROM '.$tableName.' WHERE id = :id LIMIT 1', [':id' => $id]);
 
         foreach ($row as $key => $value){
             $model->setProperty($key, $value);

@@ -13,5 +13,8 @@ $router->get('/devices/delete/(\d+)', 'DeviceController@delete');
 $router->get('/devices/edit/(\d+)', 'DeviceController@edit');
 $router->post('/devices/edit', 'DeviceController@update');
 $router->get('/wake/(\d+)', 'WakeController@wakeupDevice');
+$router->get('/login', 'LoginController@index');
+$router->post('/login', 'LoginController@login');
+$router->get('/logout', 'LoginController@logout');
 
 $router->run();

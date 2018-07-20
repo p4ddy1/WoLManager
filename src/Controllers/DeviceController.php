@@ -2,10 +2,13 @@
 namespace App\Controllers;
 
 use App\Base\BaseController;
+use App\Classes\Auth;
 use App\Models\Device;
 
 class DeviceController extends BaseController
 {
+    protected $isRestricted = true;
+
     public function index(){
         $search = null;
         if(isset($_GET['search'])){

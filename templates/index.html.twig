@@ -2,4 +2,9 @@
 {% block title %}WoLManager - Index{% endblock %}
 {% block content %}
     <h1>WoLManager</h1>
+    {% if loggedIn %}
+        <h2>Welcome {{ currentUsername }} !</h2>
+        <a href="/logout" class="pure-button button-red">Logout</a>
+    {% endif %}
+    {% include "include/loginform.html.twig" %}
 {% endblock %}

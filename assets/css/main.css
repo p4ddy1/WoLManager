@@ -2,6 +2,7 @@
     padding: 0em 1em 1em 1em;
 }
 
+
 .top-buffer {
     margin-top: 1em;
 }
@@ -61,4 +62,21 @@
 .alert-info {
     background: rgba(45, 150, 219,0.8);
     border-color: rgba(45, 150, 219,1);
+}
+
+.menu-dark {
+    background: rgb(65, 65, 65);
+}
+
+.menu-dark a{
+    color: white;
+}
+.menu-dark a:hover {
+    background: rgb(85, 85, 85);
+}
+.item-red a{
+    background: rgb(202,60,65);
+}
+.item-red a:hover{
+    background: rgb(222, 60, 65);
 }

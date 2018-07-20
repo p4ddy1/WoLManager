@@ -53,7 +53,7 @@ class Database{
         $statement = $this->pdo->prepare($sql);
         if(!is_null($params)){
             foreach($params as $key => $value){
-                $statement->bindValue($key, $value);
+                    $statement->bindValue($key, $value);
             }
         }
         return $statement;

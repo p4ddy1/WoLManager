@@ -1,17 +1,27 @@
 <?php
 namespace App\Base;
 
+use App\Classes\Auth;
+
 abstract class BaseController
 {
-    protected $twigLoader, $twig;
+    protected $twigLoader, $twig, $auth, $isRestricted = false;
 
     function __construct()
     {
         $this->twigLoader = new \Twig_Loader_Filesystem(__DIR__.'/../../templates');
         $this->twig = new \Twig_Environment($this->twigLoader);
+        $this->auth = Auth::getInstance();
     }
 
     protected function render($template, $vars = array()){
+        if($this->isRestricted){
+            if(!$this->auth->isLoggedIn()){
+                header('Location: /login');
+                return false;
+            }
+        }
+
         if($error = $this->getError()){
             $vars['error'] = $error;
         }
@@ -19,6 +29,9 @@ abstract class BaseController
         if($success = $this->getSuccess()){
             $vars['success'] = $success;
         }
+
+        $vars['loggedIn'] = $this->auth->isLoggedIn();
+        $vars['currentUsername'] = $this->auth->getUsername();
 
         echo $this->twig->render($template, $vars);
     }
