@@ -33,7 +33,17 @@ according to the information.
 
 Point webserver root to _/public_ directory. Example configuration for apache2:
 ```
+<VirtualHost *:80>
+    ServerName wolmanager.local
+    DocumentRoot /var/www/WoLManager/public
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 
+<Directory "/var/www/WoLManager/public">
+    AllowOverride all
+    Require all granted
+</Directory>
 ```
 
 ### Troubleshooting
