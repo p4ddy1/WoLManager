@@ -11,7 +11,7 @@ class DeviceController extends BaseController
         if(isset($_GET['search'])){
             $search = $_GET['search'];
             $devices = Device::where('name','LIKE','%'.$search.'%', true);
-        }else{
+        }else {
             $devices = Device::loadAll();
         }
         $this->render('devices/index.html.twig', ['devices' => $devices, 'search' => $search]);

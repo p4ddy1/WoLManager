@@ -31,6 +31,11 @@ according to the information.
 # php setup.php
 ```
 
+Point webserver root to _/public_ directory. Example configuration for apache2:
+```
+
+```
+
 ### Troubleshooting
 
 Q: I am unable to add new devices or edit existing devices.  

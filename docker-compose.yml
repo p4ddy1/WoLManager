@@ -8,6 +8,9 @@ services:
     volumes:
       - ./:/app
     user: '1000'
+    environment:
+      - "XDEBUG_CONFIG=remote_host=192.168.2.16"
+      - "PHP_IDE_CONFIG=serverName=wolmanager.devel"
   web:
     image: nginx:alpine
     volumes:
