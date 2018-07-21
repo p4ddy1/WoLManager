@@ -9,6 +9,9 @@ class DeviceController extends BaseController
 {
     protected $isRestricted = true;
 
+    /**
+     * Displays the listing page of all devices
+     */
     public function index(){
         $search = null;
         if(isset($_GET['search'])){
@@ -20,10 +23,16 @@ class DeviceController extends BaseController
         $this->render('devices/index.html.twig', ['devices' => $devices, 'search' => $search]);
     }
 
+    /**
+     * Displays the page to create new devices
+     */
     public function create(){
         echo $this->render('devices/create.html.twig');
     }
 
+    /**
+     * Called on a POST Request to create a new device in the Database
+     */
     public function save(){
         if($data = $this->validateInput()){
             $device = new Device();
@@ -40,6 +49,10 @@ class DeviceController extends BaseController
         header('Location: /devices');
     }
 
+    /**
+     * Deletes the device with the given id
+     * @param $id
+     */
     public function delete($id){
         $device = Device::loadById($id);
         $device->delete();
@@ -48,11 +61,18 @@ class DeviceController extends BaseController
         header('Location: /devices');
     }
 
+    /**
+     * Displays the edit page for the device with the given id
+     * @param $id
+     */
     public function edit($id){
         $device = Device::loadById($id);
         echo $this->render('devices/edit.html.twig', ['device' => $device]);
     }
 
+    /**
+     * Called on a POST request to update an existing device
+     */
     public function update(){
         $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
         $data = $this->validateInput();
@@ -72,6 +92,10 @@ class DeviceController extends BaseController
         header('Location: /devices');
     }
 
+    /**
+     * Validates the user inputs and returns them if the validation was successful.
+     * @return array|bool
+     */
     private function validateInput(){
         $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
         $ip = filter_var($_POST['ip'], FILTER_VALIDATE_IP);
