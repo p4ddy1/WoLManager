@@ -5,7 +5,7 @@ It provides a minimalistic web interface to wake up devices. Just install it on 
 It stores the IP, Subnetmask and MAC Address of every device you added in a SQLite database and sends the MagicPacket to the Broadcast
 according to the information.
 
-![Screenshot](http://hothead.lpnw.de/wolmanager.jpg)
+![Screenshot](http://hothead.lpnw.de/wolmanager2.jpg)
 
 ### Requirements
 
