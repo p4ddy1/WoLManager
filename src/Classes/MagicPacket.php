@@ -13,7 +13,7 @@ class MagicPacket
         $this->destinationMac = $destinationMac;
         $this->destinationSubnetMask = $destinationSubnetMask;
         $this->destinationAddress = $destinationAddress;
-        $this->port = $port;
+        $this->destinationPort = $port;
 
         $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
         socket_set_option($this->socket, SOL_SOCKET, SO_BROADCAST, 1);
