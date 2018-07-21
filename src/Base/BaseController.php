@@ -12,16 +12,16 @@ abstract class BaseController
         $this->twigLoader = new \Twig_Loader_Filesystem(__DIR__.'/../../templates');
         $this->twig = new \Twig_Environment($this->twigLoader);
         $this->auth = Auth::getInstance();
-    }
 
-    protected function render($template, $vars = array()){
         if($this->isRestricted){
             if(!$this->auth->isLoggedIn()){
                 header('Location: /login');
-                return false;
+                exit;
             }
         }
+    }
 
+    protected function render($template, $vars = array()){
         if($error = $this->getError()){
             $vars['error'] = $error;
         }

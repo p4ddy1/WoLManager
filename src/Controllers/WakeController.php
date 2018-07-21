@@ -9,11 +9,9 @@ class WakeController extends BaseController{
     protected $isRestricted = true;
 
     function wakeupDevice($id){
-        if($this->auth->isLoggedIn()){
-            $device = Device::loadById($id);
-            $magicPacket = new MagicPacket($device->getMAC(), $device->getIP(),$device->getSubnet());
-            $magicPacket->send();
-        }
+        $device = Device::loadById($id);
+        $magicPacket = new MagicPacket($device->getMAC(), $device->getIP(),$device->getSubnet());
+        $magicPacket->send();
         header('location: /devices');
     }
 }
