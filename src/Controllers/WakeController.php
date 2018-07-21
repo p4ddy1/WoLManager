@@ -15,7 +15,11 @@ class WakeController extends BaseController{
     function wakeupDevice($id){
         $device = Device::loadById($id);
         $magicPacket = new MagicPacket($device->getMAC(), $device->getIP(),$device->getSubnet());
-        $magicPacket->send();
+        if($magicPacket->send()){
+            $this->setSuccess('MagicPacket successfully sent to '.$device->getName(). '!');
+        }else{
+            $this->setError('Error while MagicPacket to '.$device->getName(). '!');
+        }
         header('location: /devices');
     }
 }
