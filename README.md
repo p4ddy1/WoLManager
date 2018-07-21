@@ -20,6 +20,7 @@ according to the information.
 * Better error handling
 * Add more comments
 * Add tests
+* Implement better setup process
 
 ### Installation
 ```

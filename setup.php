@@ -2,6 +2,13 @@
 
 require './vendor/autoload.php';
 
+echo "Checking if db directory is writable...\n";
+if(!is_writable(__DIR__.'/db')){
+    echo "Error! db directory is not writable. Please check permissions!\n";
+    exit(1);
+}
+echo "db directory is writable. Good!\n";
+
 echo "Creating tables...\n";
 
 $db = \App\Classes\Database::getInstance();
@@ -46,3 +53,4 @@ $user->create();
 
 echo "\nUser created!\n";
 echo "We are done!\n";
+exit(0);
