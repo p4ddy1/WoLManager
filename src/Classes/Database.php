@@ -11,7 +11,7 @@ class Database{
     public function __construct()
     {
         if(is_null($this->pdo)){
-            $this->pdo = new \PDO("sqlite:".__DIR__.'/../../db/wol_manager.sqlite');
+            $this->pdo = new \PDO('sqlite:'.Config::getInstance()->get('database.path'));
         }
     }
 
