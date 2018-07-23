@@ -1,0 +1,28 @@
+{% include "include/head.html.twig" %}
+<body>
+<div class="pure-menu pure-menu-horizontal menu-dark">
+    <a href="#" class="pure-menu-heading pure-menu-link">WoLManager</a>
+</div>
+<div class="main">
+    <h1>Setup</h1>
+    <form class="pure-form pure-form-stacked" method="post" action="/setup">
+        <fieldset>
+            <legend>Create user</legend>
+            <label for="username">Username</label>
+            <input id="username" name="username" class="pure-input-1-4" type="text" placeholder="Username" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" class="pure-input-1-4" type="password" placeholder="Password" required>
+            <label for="password">Repeat password</label>
+            <input id="password_repeat" class="pure-input-1-4" name="password_repeat" type="password" placeholder="Repeat password" required>
+        </fieldset>
+        <fieldset>
+            <legend>Setup database</legend>
+            <label for="db_path">Database path</label>
+            <input id="db_path" class="pure-input-1-4" name="db_path" type="text" placeholder="Absolute path of database file" value="{{ defaultDbPath }}" required>
+        </fieldset>
+        <button type="submit" class="pure-button button-blue">Setup!</button>
+    </form>
+</div>
+</body>
+{% include "include/bottom.html.twig" %}

@@ -5,6 +5,12 @@ require '../vendor/autoload.php';
 $router = new Bramus\Router\Router();
 $router->setNamespace('\App\Controllers');
 
+$router->before('GET', '/', function() {
+    if(!\App\Classes\Config::getInstance()->isConfigured()){
+        header('Location: /setup');
+    }
+});
+
 $router->get('/', 'IndexController@index');
 $router->get('/devices', 'DeviceController@index');
 $router->get('/devices/add', 'DeviceController@create');
@@ -16,5 +22,7 @@ $router->get('/wake/(\d+)', 'WakeController@wakeupDevice');
 $router->get('/login', 'LoginController@index');
 $router->post('/login', 'LoginController@login');
 $router->get('/logout', 'LoginController@logout');
+$router->get('/setup', 'SetupController@index');
+$router->post('/setup', 'SetupController@setup');
 
 $router->run();

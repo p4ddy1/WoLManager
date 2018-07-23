@@ -18,9 +18,9 @@ class Config {
     {
         if(file_exists($this->configPath)){
             $this->config = include($this->configPath);
-            $this->config['unconfigured'] = false;
+            $this->config['configured'] = true;
         } else{
-            $this->config['unconfigured'] = true;
+            $this->config['configured'] = false;
         }
 
         if(file_exists($this->sampleConfigPath)){
@@ -28,6 +28,14 @@ class Config {
         }else{
             throw new \Exception('Sample config not found!');
         }
+    }
+
+    /**
+     * Returns true if a configuration file exists
+     * @return mixed
+     */
+    function isConfigured(){
+        return $this->config['configured'];
     }
 
     /**
