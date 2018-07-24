@@ -33,10 +33,8 @@ class MagicPacket
     public function send(){
         $data = $this->generatePacketData();
         $broadcastAddress = $this->calculateBroadcast($this->destinationAddress,$this->destinationSubnetMask);
-        if(!socket_connect($this->socket, $broadcastAddress, $this->destinationPort)){
-            return false;
-        }
-        if(!socket_write($this->socket, $data, strlen($data))){
+        $result = socket_sendto($this->socket, $data, strlen($data), 0, $broadcastAddress, $this->destinationPort);
+        if($result == -1){
             return false;
         }
         return true;
