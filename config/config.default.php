@@ -2,8 +2,8 @@
 /*
  * Default configuration file
  */
-return [
+return array(
     'database' => [
         'path' => __DIR__.'/../db/wol_manager.sqlite'
     ]
-];
+);

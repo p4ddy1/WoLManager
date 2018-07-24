@@ -7,11 +7,20 @@ use App\Classes\Database;
 use App\Models\User;
 
 class SetupController extends BaseController{
+
+    /**
+     * Displays the setup page
+     * @throws \Exception
+     */
     public function index(){
         $defaultDbPath = Config::getInstance()->get('database.path');
         $this->render("setup.html.twig", ['defaultDbPath' => $defaultDbPath]);
     }
 
+    /**
+     * Called by POST Request. Retrieves the user input, creates the database tables, adds the first user and
+     * writes settings to the config file
+     */
     public function setup(){
         $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
         $password = $_POST['password'];
@@ -28,8 +37,13 @@ class SetupController extends BaseController{
         }
 
         $this->databaseCreateTables();
+        $this->createConfig($dbPath);
+
     }
 
+    /**
+     * Creates tables
+     */
     private function databaseCreateTables(){
         $db = Database::getInstance();
         $db->beginTransaction();
@@ -54,10 +68,26 @@ class SetupController extends BaseController{
         $db->commitTransaction();
     }
 
+    /**
+     * Adds first user to database
+     * @param $username
+     * @param $password
+     */
     private function databaseCreateAdminUser($username, $password){
         $user = new User();
         $user->setUsername($username);
         $user->setPassword($password);
         $user->create();
+    }
+
+    /**
+     * Creates config file
+     * @param $dbPath
+     * @throws \Exception
+     */
+    private function createConfig($dbPath){
+        $config = Config::getInstance();
+        $config->set('db.path', $dbPath);
+        $config->save();
     }
 }
