@@ -47,18 +47,10 @@ class MagicPacket
      * @return string
      */
     private function generatePacketData(){
-        $packetData = '';
         $binaryMac = $this->macToBin($this->destinationMac);
 
-        //Magic Packets always start with 6x 0xFF
-        for($i=0;$i<6;$i++){
-            $packetData .= "\xFF";
-        }
-
-        //Add the mac address 16x
-        for($i=0;$i<16;$i++){
-            $packetData .= $binaryMac;
-        }
+        //Magic Packets always start with 6x 0xFF, then 16x the mac address is added
+        $packetData = str_repeat("\xFF", 6).str_repeat($binaryMac, 16);
 
         return $packetData;
     }
