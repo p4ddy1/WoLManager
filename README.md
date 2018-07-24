@@ -22,6 +22,9 @@ according to the information.
 * Add tests
 * Implement better setup process
 
+#### Note
+This is still in development. If you found any issues or have an idea for a new feature I'm happy to hear from you!
+
 ### Installation
 ```
 # cd /var/www
