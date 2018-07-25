@@ -6,9 +6,9 @@ class Config {
     use MultiGetSet;
 
     private static $instance = null;
-    private $config = [], $sampleConfig = [];
+    private $config = [], $sampleConfig = [], $configured = false;
     private $configPath = __DIR__.'/../../config/config.php';
-    private $sampleConfigPath = __DIR__.'/../../config/config.sample.php';
+    private $sampleConfigPath = __DIR__ . '/../../config/config.default.php';
 
     /**
      * Config constructor.
@@ -18,9 +18,9 @@ class Config {
     {
         if(file_exists($this->configPath)){
             $this->config = include($this->configPath);
-            $this->config['unconfigured'] = false;
+            $this->configured = true;
         } else{
-            $this->config['unconfigured'] = true;
+            $this->configured = false;
         }
 
         if(file_exists($this->sampleConfigPath)){
@@ -28,6 +28,14 @@ class Config {
         }else{
             throw new \Exception('Sample config not found!');
         }
+    }
+
+    /**
+     * Returns true if a configuration file exists
+     * @return mixed
+     */
+    function isConfigured(){
+        return $this->configured;
     }
 
     /**
@@ -43,6 +51,28 @@ class Config {
         }else{
             return false;
         }
+    }
+
+    /**
+     * Sets configuration value for given key
+     * @param $key
+     * @param $value
+     */
+    function set($key, $value){
+        $this->multiSet($this->config, $key, $value);
+    }
+
+    /**
+     * Save configuration to file
+     * @return bool
+     */
+    function save(){
+        $exportedConfig = var_export($this->config, true);
+        $output = "<?php \nreturn $exportedConfig;";
+        if(!file_put_contents($this->configPath, $output)){
+            return false;
+        }
+        return true;
     }
 
     /**
