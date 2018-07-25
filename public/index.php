@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 $router = new Bramus\Router\Router();
 $router->setNamespace('\App\Controllers');
+$router->set404('ErrorController@error404');
 
 if(!\App\Classes\Config::getInstance()->isConfigured()) {
     $router->get('/', 'SetupController@index');
