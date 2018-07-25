@@ -16,11 +16,9 @@ according to the information.
 
 ### TODO
 
-* Add configuration support 
 * Better error handling
 * Add more comments
 * Add tests
-* Implement better setup process
 
 #### Note
 This is still in development. If you found any issues or have an idea for a new feature I'm happy to hear from you!
@@ -33,7 +31,6 @@ This is still in development. If you found any issues or have an idea for a new 
 # composer install
 # npm install
 # npm run build
-# php setup.php
 ```
 
 Point webserver root to _/public_ directory. Example configuration for apache2:
@@ -50,6 +47,9 @@ Point webserver root to _/public_ directory. Example configuration for apache2:
     Require all granted
 </Directory>
 ```
+
+Point your browser to the address of your installation and complete the setup process. Create a user account and supply a
+path where the SQLite database should be saved (default is the db directory). Done!
 
 ### Troubleshooting
 
