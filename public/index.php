@@ -4,12 +4,12 @@ require '../vendor/autoload.php';
 
 $router = new Bramus\Router\Router();
 $router->setNamespace('\App\Controllers');
-$router->set404('ErrorController@error404');
 
 if(!\App\Classes\Config::getInstance()->isConfigured()) {
     $router->get('/', 'SetupController@index');
     $router->post('/setup', 'SetupController@setup');
 }else{
+    $router->set404('ErrorController@error404');
     $router->get('/', 'IndexController@index');
     $router->get('/devices', 'DeviceController@index');
     $router->get('/devices/add', 'DeviceController@create');

@@ -22,23 +22,38 @@ class SetupController extends BaseController{
      * writes settings to the config file
      */
     public function setup(){
-        $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+        $username = $_POST['username'];
         $password = $_POST['password'];
         $passwordRepeat = $_POST['password_repeat'];
         $dbPath = filter_var($_POST['db_path'], FILTER_SANITIZE_STRING);
 
-        if($username && $dbPath){
-            if($password == $passwordRepeat){
-                $this->databaseCreateTables();
-                $this->databaseCreateAdminUser($username, $password);
-                $this->setSuccess('Setup completed successfully');
-                header('Location: /');
-            }
+        if(!preg_match('/^[A-z0-9_]{3,20}$/', $username)){
+            $this->setError('Invalid username!');
+            $this->redirect();
+        }
+        if(!$dbPath){
+            $this->setError('Invalid database path!');
+            $this->redirect();
+        }
+        if($password !== $passwordRepeat){
+            $this->setError('Passwords do not match!');
+            $this->redirect();
+        }
+        if(!$this->createConfig($dbPath)){
+            $this->setError('Could not create config file. Check permissions!');
+            $this->redirect();
         }
 
         $this->databaseCreateTables();
-        $this->createConfig($dbPath);
+        $this->databaseCreateAdminUser($username, $password);
 
+        $this->setSuccess('Setup completed successfully');
+        header('Location: /');
+    }
+
+    private function redirect(){
+        header('Location: /');
+        exit;
     }
 
     /**
@@ -84,10 +99,11 @@ class SetupController extends BaseController{
      * Creates config file
      * @param $dbPath
      * @throws \Exception
+     * @return bool
      */
     private function createConfig($dbPath){
         $config = Config::getInstance();
         $config->set('db.path', $dbPath);
-        $config->save();
+        return $config->save();
     }
 }
