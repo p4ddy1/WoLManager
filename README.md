@@ -32,6 +32,11 @@ This is still in development. If you found any issues or have an idea for a new 
 # npm install
 # npm run build
 ```
+Make sure the _db_ and _config_ is writeable for the webserver:
+
+```
+# chown -R www-data:www-data db config
+```
 
 Point webserver root to _/public_ directory. Example configuration for apache2:
 ```
