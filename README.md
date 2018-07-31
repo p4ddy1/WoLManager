@@ -1,6 +1,6 @@
 # WoLManager
 
-WoLManager is a small tool I wrote to be able to startup devices in my network using their WakeOnLan functionality.
+WoLManager is a small tool I wrote using PHP to be able to startup devices in my network using their WakeOnLan functionality.
 It provides a minimalistic web interface to wake up devices. Just install it on a web server in your network and you are good to go.
 It stores the IP, Subnetmask and MAC Address of every device you added in a SQLite database and sends the MagicPacket to the Broadcast
 according to the information.
@@ -17,11 +17,11 @@ according to the information.
 ### TODO
 
 * Better error handling
-* Add more comments
 * Add tests
+* Add more comments
 
 #### Note
-This is still in development. If you found any issues or have an idea for a new feature I'm happy to hear from you!
+This is still in development. If you find any issues or have an idea for a new feature I'm happy to hear from you!
 
 ### Installation
 ```
